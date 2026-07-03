@@ -3,481 +3,400 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Slowing Down in Siargao — A Lesson in Mindfulness</title>
+<title>The Island That Almost Drowned in Paradise — Siargao</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --lagoon:#0E3B37;
-    --lagoon-deep:#0A2B28;
-    --sandbar:#F4ECDA;
-    --ink:#16241F;
-    --coral:#E2673B;
-    --gold:#E8A33D;
-    --seaglass:#7FAE9E;
-    --line: rgba(22,36,31,0.14);
-    --line-light: rgba(244,236,218,0.22);
-    --maxw: 720px;
+    --ink:#142521;
+    --ink-soft:#3c4e48;
+    --sand:#F4ECDC;
+    --sand-deep:#e9dec4;
+    --ocean-deep:#0E2A2E;
+    --ocean-mid:#123B3C;
+    --teal:#2F6E68;
+    --amber:#E8935B;
+    --coral:#D65F3C;
+    --font-display:'Fraunces', serif;
+    --font-body:'Work Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
   }
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--sandbar);
-    color:var(--ink);
-    font-family:'Work Sans', sans-serif;
-    font-weight:400;
-    line-height:1.7;
-    -webkit-font-smoothing:antialiased;
-  }
-
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
   }
-
-  a{color:inherit;}
-
-  /* ---------- Sun-path progress rail ---------- */
-  #sunrail{
-    position:fixed;
-    top:0; left:0; right:0;
-    height:54px;
-    z-index:1000;
-    pointer-events:none;
-    mix-blend-mode: normal;
-  }
-  #sunrail svg{width:100%; height:100%; display:block;}
-  #sunrail .rail-track{
-    stroke: var(--line-light);
-    stroke-width:1.5;
-    fill:none;
-  }
-  #sunrail .rail-fill{
-    stroke: var(--gold);
-    stroke-width:1.5;
-    fill:none;
-    stroke-linecap:round;
-  }
-  #sunrail .sun-dot{
-    filter: drop-shadow(0 0 6px rgba(232,163,61,0.85));
-  }
-  #sunrail .rail-label{
-    font-family:'Space Mono', monospace;
-    font-size:10px;
-    letter-spacing:0.08em;
-    fill: var(--sandbar);
-    opacity:0.55;
-  }
-  .rail-bg{
-    position:fixed; top:0; left:0; right:0; height:54px;
-    background: linear-gradient(180deg, var(--lagoon-deep), rgba(14,59,55,0.94) 70%, rgba(14,59,55,0));
-    z-index:999;
-  }
-
-  /* ---------- Nav / eyebrow bar ---------- */
-  .topline{
-    position:relative;
-    z-index:5;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    max-width:1100px;
-    margin:0 auto;
-    padding:78px 32px 0;
-    font-family:'Space Mono', monospace;
-    font-size:11px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
+  body{
+    margin:0;
+    background:var(--sand);
     color:var(--ink);
-    opacity:0.6;
+    font-family:var(--font-body);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
   }
+  img{max-width:100%; display:block;}
+  a{color:var(--coral);}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--amber); outline-offset:3px;}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+  .prose{max-width:660px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- Tide divider (signature motif) ---------- */
+  .tide{width:100%; height:34px; display:block;}
+  .tide-teal path{stroke:var(--teal);}
+  .tide-amber path{stroke:var(--amber);}
+  .tide path{fill:none; stroke-width:1.4; opacity:.55;}
 
   /* ---------- Hero ---------- */
   .hero{
     position:relative;
-    margin:22px 24px 0;
-    border-radius:2px;
-    overflow:hidden;
-    height:88vh;
-    min-height:520px;
-    max-height:820px;
+    min-height:100vh;
     display:flex;
     align-items:flex-end;
+    background:#0a1a1c;
+    overflow:hidden;
   }
   .hero img{
-    position:absolute;
-    inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    filter:saturate(1.05) contrast(1.02);
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    object-position:center 38%;
+    opacity:.92;
   }
   .hero::after{
     content:"";
     position:absolute; inset:0;
-    background:linear-gradient(0deg, rgba(10,25,22,0.88) 0%, rgba(10,25,22,0.35) 42%, rgba(10,25,22,0.05) 65%);
+    background:linear-gradient(180deg, rgba(10,20,22,.05) 0%, rgba(10,20,22,.15) 45%, rgba(9,20,20,.92) 100%);
   }
-  .hero-inner{
-    position:relative;
-    z-index:2;
-    padding:0 48px 56px;
-    max-width:900px;
-    color:var(--sandbar);
-  }
-  .hero-eyebrow{
-    font-family:'Space Mono', monospace;
-    font-size:12px;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:18px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .hero-eyebrow::before{
-    content:"";
-    width:22px; height:1px;
-    background:var(--gold);
-    display:inline-block;
-  }
-  h1.hero-title{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    font-style:italic;
-    font-size:clamp(2.3rem, 6vw, 4.6rem);
-    line-height:1.04;
-    margin:0 0 18px;
-    letter-spacing:-0.01em;
-  }
-  .hero-title .not-italic{ font-style:normal; font-weight:400; }
-  .hero-sub{
-    font-family:'Work Sans', sans-serif;
-    font-weight:300;
-    font-size:clamp(1rem, 1.6vw, 1.2rem);
-    max-width:520px;
-    color:rgba(244,236,218,0.86);
-  }
-
-  /* ---------- Article shell ---------- */
-  main{
-    max-width:var(--maxw);
-    margin:0 auto;
-    padding:96px 28px 40px;
-  }
-  .lede{
-    font-family:'Fraunces', serif;
-    font-weight:400;
-    font-size:1.45rem;
-    line-height:1.55;
-    color:var(--ink);
-    margin-bottom:2.6rem;
-  }
-  .lede::first-letter{
-    font-family:'Fraunces', serif;
-    font-size:4.2rem;
-    font-weight:500;
-    float:left;
-    line-height:0.78;
-    padding:0.05em 0.08em 0 0;
-    color:var(--coral);
-  }
-
-  p.body-text{
-    font-size:1.06rem;
-    margin:0 0 1.6rem;
-    color:var(--ink);
-  }
-
-  .divider{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    margin:3.2rem 0;
-    color:var(--seaglass);
-  }
-  .divider::before, .divider::after{
-    content:"";
-    flex:1;
-    height:1px;
-    background:var(--line);
-  }
-  .divider span{
-    font-family:'Space Mono', monospace;
-    font-size:11px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--seaglass);
-  }
-
-  /* ---------- In-line figures ---------- */
-  figure{
-    margin:2.6rem 0;
-  }
-  figure img{
+  .hero-content{
+    position:relative; z-index:2;
     width:100%;
-    display:block;
-    border-radius:2px;
+    padding:0 28px 64px;
+    max-width:1120px;
+    margin:0 auto;
+    color:#F4ECDC;
   }
-  figure.wide{
-    margin-left:calc((var(--maxw) - 100vw)/2 + 28px);
-    margin-right:calc((var(--maxw) - 100vw)/2 + 28px);
-    max-width:none;
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--amber);
+    margin:0 0 18px;
   }
-  @media (min-width:820px){
-    figure.wide{
-      margin-left:calc((var(--maxw) - 980px)/2);
-      margin-right:calc((var(--maxw) - 980px)/2);
-      width:980px;
-    }
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:clamp(2.1rem, 5.6vw, 4.4rem);
+    line-height:1.03;
+    margin:0 0 14px;
+    max-width:16ch;
   }
-  figcaption{
-    font-family:'Space Mono', monospace;
-    font-size:11.5px;
-    letter-spacing:0.03em;
-    color:var(--seaglass);
-    margin-top:10px;
-    padding-left:2px;
+  .hero .dek{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1.05rem, 1.8vw, 1.4rem);
+    color:#dfe6e0;
+    max-width:44ch;
+    margin:0 0 30px;
+  }
+  .byline{
+    display:flex; flex-wrap:wrap; gap:8px 28px;
+    font-family:var(--font-mono);
+    font-size:.78rem;
+    color:#c8d2cb;
+    border-top:1px solid rgba(244,236,220,.25);
+    padding-top:18px;
+  }
+  .byline strong{color:#F4ECDC; font-weight:500;}
+
+  /* ---------- Meta strip ---------- */
+  .meta-strip{
+    padding:36px 0 8px;
+    text-align:center;
+  }
+  .meta-strip .loc{
+    font-family:var(--font-mono);
+    font-size:.75rem;
+    letter-spacing:.2em;
+    color:var(--teal);
+    text-transform:uppercase;
   }
 
-  .two-up{
+  /* ---------- Article sections ---------- */
+  section{padding:56px 0;}
+  .figure{margin:0; padding:0;}
+  .figure img{width:100%; border-radius:2px;}
+  .caption{
+    font-family:var(--font-mono);
+    font-size:.76rem;
+    color:var(--ink-soft);
+    padding:12px 28px 0;
+    max-width:1120px;
+    margin:0 auto;
+    display:flex; flex-wrap:wrap; gap:4px 14px;
+  }
+  .caption .credit{color:var(--teal);}
+  .caption a{color:var(--ink-soft); text-decoration-color:var(--amber);}
+
+  p{font-size:1.08rem; color:var(--ink); margin:0 0 26px;}
+  .dropcap:first-letter{
+    font-family:var(--font-display);
+    font-size:4.2rem;
+    line-height:.78;
+    float:left;
+    padding:6px 10px 0 0;
+    color:var(--teal);
+    font-weight:500;
+  }
+
+  .photo-strip{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1.1fr .9fr;
     gap:14px;
+    margin:56px auto;
   }
-  .two-up img{ height:100%; object-fit:cover; }
-  @media (max-width:600px){
-    .two-up{grid-template-columns:1fr;}
+  .photo-strip img{width:100%; height:100%; object-fit:cover; border-radius:2px;}
+  .photo-strip .tall{aspect-ratio:3/4;}
+  .photo-strip .square{aspect-ratio:4/5;}
+
+  /* ---------- Stat block ---------- */
+  .stat-block{
+    background:var(--ocean-deep);
+    color:var(--sand);
+    padding:64px 28px;
+    text-align:center;
   }
+  .stat-block .num{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:clamp(3.6rem, 12vw, 7.5rem);
+    color:var(--amber);
+    line-height:1;
+    margin:0;
+  }
+  .stat-block .label{
+    max-width:38ch;
+    margin:14px auto 0;
+    font-size:1.02rem;
+    color:#cfd9d2;
+  }
+  .stat-block .label em{color:var(--sand); font-style:normal; font-family:var(--font-mono); font-size:.85em;}
 
   /* ---------- Pull quote ---------- */
   blockquote{
-    margin:3.4rem 0;
-    padding:0.2rem 0 0.2rem 32px;
-    border-left:2px solid var(--coral);
-    font-family:'Fraunces', serif;
+    font-family:var(--font-display);
     font-style:italic;
-    font-weight:500;
-    font-size:1.5rem;
-    line-height:1.4;
-    color:var(--lagoon);
+    font-weight:400;
+    font-size:clamp(1.4rem, 3vw, 2.05rem);
+    line-height:1.35;
+    color:var(--ocean-mid);
+    max-width:640px;
+    margin:44px auto;
+    padding:0 28px;
+    text-align:center;
+    border:none;
   }
+  blockquote::before{content:"“"; color:var(--amber);}
+  blockquote::after{content:"”"; color:var(--amber);}
 
-  /* ---------- Field notes box ---------- */
-  .field-notes{
-    background:var(--lagoon);
-    color:var(--sandbar);
-    border-radius:2px;
-    padding:40px 40px 34px;
-    margin:3.4rem 0;
-  }
-  .field-notes-head{
-    font-family:'Space Mono', monospace;
-    font-size:11px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:14px;
-  }
-  .field-notes h3{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    font-size:1.5rem;
-    margin:0 0 16px;
-  }
-  .field-notes p{
-    font-weight:300;
-    font-size:0.98rem;
-    color:rgba(244,236,218,0.82);
-    margin:0 0 22px;
-  }
-  .tide-list{
-    list-style:none;
-    margin:0; padding:0;
+  /* ---------- Action list ---------- */
+  .action-section{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:14px 24px;
+    gap:0;
+    align-items:stretch;
+    background:var(--sand-deep);
   }
-  @media (max-width:560px){ .tide-list{grid-template-columns:1fr;} }
-  .tide-list li{
-    display:flex;
-    gap:12px;
-    font-size:0.95rem;
-    font-weight:400;
-    align-items:flex-start;
-    border-top:1px solid rgba(244,236,218,0.16);
-    padding-top:12px;
+  .action-section .img-col img{width:100%; height:100%; object-fit:cover; min-height:340px;}
+  .action-section .text-col{padding:56px 40px;}
+  .action-section h3{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:1.7rem;
+    margin:0 0 20px;
+    color:var(--ocean-deep);
   }
-  .tide-list li::before{
-    content:"~";
-    color:var(--seaglass);
-    font-family:'Space Mono', monospace;
-    font-weight:700;
+  .action-list{list-style:none; margin:0; padding:0;}
+  .action-list li{
+    position:relative;
+    padding:0 0 16px 26px;
+    font-size:1rem;
+    color:var(--ink);
   }
+  .action-list li::before{
+    content:"";
+    position:absolute; left:0; top:9px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--teal);
+  }
+
+  /* ---------- Closing ---------- */
+  .closing{
+    background:var(--ocean-deep);
+    color:var(--sand);
+    padding:80px 0 60px;
+  }
+  .closing .prose p{color:#d9e1da;}
+  .closing .dropcap:first-letter{color:var(--amber);}
+
+  /* ---------- References ---------- */
+  .refs{
+    background:#0a1c1e;
+    color:#a9b7ae;
+    padding:56px 0 40px;
+    font-family:var(--font-mono);
+    font-size:.82rem;
+  }
+  .refs h4{
+    font-family:var(--font-mono);
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-size:.72rem;
+    color:var(--amber);
+    margin:0 0 22px;
+  }
+  .refs ol{padding-left:20px; margin:0;}
+  .refs li{margin-bottom:16px; line-height:1.6;}
+  .refs a{color:#c8d2cb; word-break:break-word;}
 
   footer{
-    max-width:var(--maxw);
-    margin:0 auto;
-    padding:20px 28px 90px;
-    font-family:'Space Mono', monospace;
-    font-size:11px;
-    letter-spacing:0.08em;
-    color:var(--seaglass);
-    text-transform:uppercase;
-    display:flex;
-    justify-content:space-between;
-    border-top:1px solid var(--line);
-    padding-top:26px;
+    background:#08191a;
+    color:#7c8a81;
+    text-align:center;
+    padding:26px 20px;
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.05em;
   }
 
-  /* scroll reveal */
-  .reveal{
-    opacity:0;
-    transform:translateY(18px);
-    transition:opacity 0.8s ease, transform 0.8s ease;
-  }
-  .reveal.in{
-    opacity:1;
-    transform:translateY(0);
+  @media (max-width:760px){
+    .photo-strip{grid-template-columns:1fr; }
+    .action-section{grid-template-columns:1fr;}
+    .action-section .img-col img{min-height:260px;}
+    .byline{gap:6px 18px;}
   }
 </style>
 </head>
 <body>
 
-<div class="rail-bg"></div>
-<div id="sunrail">
-  <svg viewBox="0 0 1000 54" preserveAspectRatio="none">
-    <path class="rail-track" d="M 0 46 Q 500 -30 1000 46"/>
-    <path class="rail-fill" id="railFill" d="M 0 46 Q 500 -30 1000 46" stroke-dasharray="0 2000"/>
-    <circle id="sunDot" class="sun-dot" cx="0" cy="46" r="4.5" fill="#E8A33D"/>
-    <text x="20" y="20" class="rail-label">DAWN</text>
-    <text x="905" y="20" class="rail-label">DUSK</text>
-  </svg>
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <img src="hero-sunrise.jpg" alt="Two surfers carrying boards across a wooden footbridge at golden sunset, framed by a coconut palm, Siargao">
+  <div class="hero-content">
+    <p class="eyebrow">Field Notes — Siargao Island, Philippines</p>
+    <h1>The Island That Almost Drowned in Paradise</h1>
+    <p class="dek">Siargao and the cost of tourism growth. After years of booming tourism, the island is learning how to protect what made it special.</p>
+    <div class="byline">
+      <span><strong></strong> Dizon, Shearlyn</span>
+      <span>Castañares, Carla Jane</span>
+      <span>Malinao, Jessiree</span>
+      <span>April 30, 2026</span>
+    </div>
+  </div>
+</header>
+
+<div class="meta-strip">
+  <p class="loc">General Luna · Cloud 9 · Del Carmen</p>
 </div>
 
-<div class="topline">
-  <span>Field Notes / No. 04</span>
-  <span>Siargao, Philippines</span>
-</div>
+<svg class="tide tide-teal" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0 20 Q 75 4, 150 20 T 300 20 T 450 20 T 600 20 T 750 20 T 900 20 T 1050 20 T 1200 20"/></svg>
 
-<section class="hero">
-  <img src="images/hero-sunrise.jpg" alt="Sunrise over the shoreline in Siargao, with fishing boats silhouetted against a golden sky">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Notes on slow travel</div>
-    <h1 class="hero-title">Slowing Down<br><span class="not-italic">in Siargao</span></h1>
-    <p class="hero-sub">A lesson in mindfulness, learned somewhere between the tide coming in and a cup of coffee going cold.</p>
+<!-- ===== SECTION: Sunrise ===== -->
+<section>
+  <figure class="figure">
+    <img src="fishermen-boats.jpg" alt="Dawn silhouette of a long wooden pier over calm water, Siargao">
+  </figure>
+  <p class="caption"><span class="credit">Sunrise in Siargao.</span> Photo by MindaNews. <a href="https://mindanews.com/photo-of-the-day/2021/04/119129/" target="_blank" rel="noopener">mindanews.com</a></p>
+
+  <div class="prose" style="margin-top:40px;">
+    <p class="dropcap">At sunrise, Siargao begins in silence. Near Cloud 9, a fisherman rows across calm waters while the island is still resting. But as the day unfolds, the silence disappears. Tourists gather along the boardwalk, surfboards in hand, chasing waves and photos of paradise. The island that once felt slow now moves with constant energy. A tricycle rattles past as a barefoot local balances a basket of freshly caught fish, the scent of salt and sea still clinging to the air. In Siargao, this contrast defines everyday life, where quiet routines meet a growing wave of visitors drawn to its beauty. Known for the legendary breaks at Cloud 9, the island offers more than just surf; it holds hidden lagoons, palm-lined roads, and a culture rooted in simplicity. Even as energy builds tourism, Siargao continues to carry its original rhythm, shaped by the sea and the people who have long called it home.</p>
   </div>
 </section>
 
-<main>
+<div class="wrap">
+  <div class="photo-strip">
+    <img class="tall" src="cafe-locals.jpg" alt="Silhouette of a coconut palm and footbridge over the lagoon at dusk, people walking across">
+    <img class="square" src="coconut-trees.png" alt="Coconut and banana palms against a clear blue sky">
+  </div>
+</div>
 
-  <p class="lede reveal">Most travelers come to Siargao chasing the perfect wave or the next Instagram-worthy photo. I arrived expecting the same, but I left with something far more meaningful.</p>
+<svg class="tide tide-teal" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0 20 Q 75 4, 150 20 T 300 20 T 450 20 T 600 20 T 750 20 T 900 20 T 1050 20 T 1200 20"/></svg>
 
-  <p class="body-text reveal">Instead of rushing from one attraction to another, I found myself slowing down and discovering the quiet moments that truly define the island. At first, I felt the urge to visit every popular spot on the island. I even made a list of places I didn't want to miss. However, after a day or two, I realized that the moments I enjoyed the most weren't always the ones I had planned. Some of my favorite memories came from sitting at a small café, talking with friendly locals, or simply walking along the beach without checking the time. Those simple experiences made the trip feel more meaningful than following a packed itinerary.</p>
-
-  <figure class="wide reveal">
-    <img src="images/cafe-locals.jpg" alt="A small local café scene in Siargao, the kind of quiet spot where unplanned moments happen">
-    <figcaption>No itinerary, no rush — just a table, a drink, and the island moving at its own pace.</figcaption>
+<!-- ===== SECTION: Cloud 9 / reflection ===== -->
+<section>
+  <figure class="figure">
+    <img src="local-vendors.png" alt="Two surfboards standing upright in the sand, one reading Siargao Pacifico, surfers riding waves in the background">
   </figure>
+  <p class="caption"><span class="credit">A famous Cloud 9 destination for surfing.</span> Source: The Filipino Times.</p>
 
-  <div class="divider reveal"><span>Sunrise</span></div>
+  <div class="prose" style="margin-top:40px;">
+    <p>When I traveled to Siargao, its rise as a global tourism destination felt like a real and unfolding challenge: how to grow tourism without destroying the very environment that attracts visitors. I observed that its natural beauty continues to draw people in, yet it also reflects what regenerative tourism research describes as a shift from simply reducing harm to actively improving destinations and supporting local communities (Bellato &amp; Pollock, 2023). This perspective aligns with global sustainable tourism goals promoted by the United Nations World Tourism Organization (UNWTO, 2023). As I explored the island, I saw how tourism has created jobs and economic opportunities for locals, bringing both energy and livelihood to the community. At the same time, I noticed an increasing pressure on waste systems, coastal ecosystems, and daily island life.</p>
+  </div>
+</section>
 
-  <p class="body-text reveal">One early morning, I sat near the shore as the sun painted the sky with shades of gold and orange. The only sounds were gentle waves meeting the sand, birds gliding overhead, and fishermen preparing their boats for another day at sea. The salty breeze, the scent of the ocean, and the peaceful rhythm of island life reminded me that Siargao's greatest beauty isn't just found in its famous destinations — it lives in the people, the environment, and the simple moments that often go unnoticed.</p>
+<div class="stat-block">
+  <p class="num">8.9%</p>
+  <p class="label">of the Philippines' GDP came from tourism in 2024 — <em>Philippine Statistics Authority, 2025</em> — underscoring both the industry's economic weight and the responsibility that comes with it.</p>
+</div>
 
-  <blockquote class="reveal">Siargao's greatest beauty isn't just found in its famous destinations — it lives in the people, the environment, and the simple moments that often go unnoticed.</blockquote>
+<figure class="figure">
+  <img src="beach-walk.jpg" alt="Aerial view of Siargao's limestone lagoon islands surrounded by turquoise water and small boats">
+</figure>
 
-  <figure class="wide reveal">
-    <img src="images/fishermen-boats.jpg" alt="Fishermen preparing their boats early in the morning on the shores of Siargao">
-    <figcaption>Fishermen preparing their boats for another day at sea, just past sunrise.</figcaption>
-  </figure>
-
-  <p class="body-text reveal">As the days passed, I noticed how different life felt on the island. People weren't constantly rushing from one place to another, and that slower pace encouraged me to do the same. I started paying attention to little details that I would normally overlook — the sound of children laughing by the shore, the coconut trees moving with the wind, and the smiles of people greeting each other as they passed. Those ordinary moments helped me appreciate the beauty of being fully present.</p>
-
-  <div class="two-up reveal">
-    <img src="images/coconut-trees.png" alt="Coconut trees swaying by the beach in Siargao">
-    <img src="images/beach-walk.jpg" alt="Walking along a quiet beach in Siargao without checking the time">
+<section>
+  <div class="prose">
+    <p>I realized that every traveler has a responsibility. Supporting local businesses, respecting community traditions, reducing plastic waste, and protecting the island's natural resources are not difficult choices; they are meaningful ways to ensure that Siargao remains beautiful for generations to come.</p>
   </div>
 
-  <div class="divider reveal"><span>A quieter kind of travel</span></div>
+  <blockquote>Tourism should never come at the expense of the environment or the people who have cared for this island long before it became a global destination.</blockquote>
+</section>
 
-  <p class="body-text reveal">As more visitors continue to discover this paradise, I realized that every traveler has a responsibility. Supporting local businesses, respecting community traditions, reducing plastic waste, and protecting the island's natural resources are not difficult choices; they are meaningful ways to ensure that Siargao remains beautiful for generations to come. Tourism should never come at the expense of the environment or the people who have cared for this island long before it became a global destination.</p>
-
-  <div class="field-notes reveal">
-    <div class="field-notes-head">Field notes</div>
-    <h3>Responsible travel doesn't have to be a big sacrifice</h3>
-    <p>Simple actions can make a positive impact — supporting the community while protecting the island so many people come to enjoy.</p>
-    <ul class="tide-list">
+<!-- ===== SECTION: Small acts ===== -->
+<div class="action-section">
+  <div class="img-col">
+    <img src="sunset-close.png" alt="Dramatic orange sunset over breaking waves with a distant pier silhouette">
+  </div>
+  <div class="text-col">
+    <h3>Small choices, big tide</h3>
+    <p style="margin-bottom:24px; color:var(--ink-soft);">Responsible travel doesn't have to involve big sacrifices — just steady, ordinary habits.</p>
+    <ul class="action-list">
       <li>Bring a reusable water bottle</li>
       <li>Throw away trash properly</li>
       <li>Choose local restaurants</li>
       <li>Buy handmade products from local vendors</li>
     </ul>
   </div>
+</div>
 
-  <figure class="wide reveal">
-    <img src="images/local-vendors.png" alt="Local vendors and handmade products in Siargao supporting the community">
-    <figcaption>Small choices, like buying from local vendors, help the community and protect the island at once.</figcaption>
-  </figure>
+<svg class="tide tide-amber" viewBox="0 0 1200 40" preserveAspectRatio="none" style="background:var(--ocean-deep);"><path d="M0 20 Q 75 4, 150 20 T 300 20 T 450 20 T 600 20 T 750 20 T 900 20 T 1050 20 T 1200 20"/></svg>
 
-  <div class="divider reveal"><span>What I carried home</span></div>
+<!-- ===== CLOSING ===== -->
+<div class="closing">
+  <div class="prose">
+    <p class="dropcap">Looking back, Siargao changed the way I think about traveling. Before this trip, I believed that the best vacations were the busiest ones. Now, I understand that the most unforgettable experiences often come from slowing down, appreciating the present, and allowing a place to teach you something beyond what you can see in photographs.</p>
+  </div>
+</div>
 
-  <p class="body-text reveal">Looking back, I realized that Siargao changed the way I think about traveling. Before this trip, I believed that the best vacations were the busiest ones. Now, I understand that the most unforgettable experiences often come from slowing down, appreciating the present, and allowing a place to teach you something beyond what you can see in photographs.</p>
-
-  <p class="body-text reveal">When I left Siargao, I didn't just bring home photographs or souvenirs. I carried with me a new perspective: that the best journeys are not measured by how many places we visit, but by how deeply we appreciate them. Siargao taught me that slowing down allows us to connect not only with nature but also with ourselves. That lesson is the greatest souvenir I could ever bring home.</p>
-
-  <figure class="wide reveal">
-    <img src="images/sunset-close.png" alt="Close-up of a Siargao sunset, warm gold light over the water">
-    <figcaption>The greatest souvenir doesn't fit in a suitcase.</figcaption>
-  </figure>
-
-</main>
+<!-- ===== REFERENCES ===== -->
+<div class="refs">
+  <div class="wrap">
+    <h4>References</h4>
+    <ol>
+      <li>Bellato, L., &amp; Pollock, A. (2023). Regenerative tourism: A state-of-the-art review. <em>Tourism Geographies.</em> <a href="https://doi.org/10.1080/14616688.2023.2294366" target="_blank" rel="noopener">doi.org/10.1080/14616688.2023.2294366</a></li>
+      <li>Department of Tourism (DOT), Philippines. (2024). Siargao tourism statistics (FOI request data). Retrieved from <a href="https://www.foi.gov.ph/agencies/dot/siargao-tourism-statistics/" target="_blank" rel="noopener">foi.gov.ph</a></li>
+      <li>Palau Visitors Authority. (2022). Palau pledge environmental program overview. Retrieved from <a href="https://www.palau.co/conservation-sustainability/palau-pledge/" target="_blank" rel="noopener">palau.co</a></li>
+      <li>United Nations World Tourism Organization (UNWTO). (2023). Tourism definitions and sustainable development in tourism. Retrieved from <a href="https://www.untourism.int/global/publication/UNWTO-Tourism-definitions" target="_blank" rel="noopener">untourism.int</a></li>
+    </ol>
+  </div>
+</div>
 
 <footer>
-  <span>Siargao, Philippines</span>
-  <span>Field Notes on Slow Travel</span>
+  Siargao Island, Philippines — a photo essay on tourism &amp; responsibility
 </footer>
-
-<script>
-  // Sun-path scroll progress
-  (function(){
-    const fill = document.getElementById('railFill');
-    const sun = document.getElementById('sunDot');
-    const path = fill;
-    const totalLength = path.getTotalLength();
-    fill.style.strokeDasharray = totalLength;
-    fill.style.strokeDashoffset = totalLength;
-
-    function update(){
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
-      const drawLength = totalLength * pct;
-      fill.style.strokeDashoffset = totalLength - drawLength;
-      const point = path.getPointAtLength(drawLength);
-      sun.setAttribute('cx', point.x);
-      sun.setAttribute('cy', point.y);
-    }
-    update();
-    window.addEventListener('scroll', update, {passive:true});
-    window.addEventListener('resize', update);
-  })();
-
-  // Reveal on scroll
-  (function(){
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      });
-    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-    els.forEach(el=>io.observe(el));
-  })();
-</script>
 
 </body>
 </html>
